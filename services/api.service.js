@@ -22,7 +22,7 @@ module.exports = {
 
 
         } catch (e) {
-            console.log(e)
+            throw new Error("Could not return all pokemons")
         }
 
     }

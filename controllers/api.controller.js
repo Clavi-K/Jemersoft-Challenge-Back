@@ -7,13 +7,12 @@ const service = require("../services/api.service")
 /* ----- MODULE EXPORT ----- */
 
 module.exports = {
-    
+
     getAll: async (req, res) => {
 
         try {
 
             const result = await service.getAll()
-            console.log(result)
             return res.status(200).send(result)
 
         } catch (e) {
