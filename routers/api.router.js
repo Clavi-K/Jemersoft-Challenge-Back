@@ -8,6 +8,8 @@ const controller = require("../controllers/api.controller")
 
 /* ----- ROUTES ----- */
 
+router.get("/getAll", controller.getAll)
+router.get("/:id", controller.getOne)
 
 
 /* ---------- */
