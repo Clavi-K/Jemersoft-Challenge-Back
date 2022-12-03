@@ -8,11 +8,12 @@ const service = require("../services/api.service")
 
 module.exports = {
 
-    getAll: async (req, res) => {
+    getTen: async (req, res) => {
+        const { maxIndex } = req.params
 
         try {
 
-            const result = await service.getAll()
+            const result = await service.getTen(maxIndex)
             return res.status(200).send(result)
 
         } catch (e) {
@@ -30,7 +31,7 @@ module.exports = {
 
             return res.status(200).send(result)
 
-        } catch(e) {
+        } catch (e) {
             console.log(e)
             return res.status(500).send("Error: Could not find that pokemon")
         }

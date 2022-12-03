@@ -8,7 +8,7 @@ const controller = require("../controllers/api.controller")
 
 /* ----- ROUTES ----- */
 
-router.get("/getAll", controller.getAll)
+router.get("/getTen/:maxIndex", controller.getTen)
 router.get("/:id", controller.getOne)
 
 
