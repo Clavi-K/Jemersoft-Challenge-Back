@@ -10,12 +10,20 @@ const config = require("../config")
 
 module.exports = {
 
-    getAll: async () => {
+    getTen: async (maxIndex) => {
+
+        if(isNaN(Number(maxIndex))) throw new Error("Invalid param data")
+        const limit = maxIndex < 1154 ? maxIndex : 1154
+
+        const promises = []
 
         try {
 
-            const { data } = await axios.get(`${config.api.APIURL}/pokemon?limit=50`)
-            const promises = data.results.map(p => requestHandler(p.url))
+            const { data } = await axios.get(`${config.api.APIURL}/pokemon?limit=${limit}`)
+
+            for(let i = limit - 10; i < limit; i++) {
+                promises.push(requestHandler(data.results[i].url))
+            }
 
             const pokemons = await Promise.all(promises)
             return pokemons.map(p => pokemonFilter(p, false))
